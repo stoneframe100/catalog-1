@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>Stoneframe</h1>
+        <h1>STONEFRAME</h1>
         <p className="subtitle">לפעמים הדברים הקטנים ביותר ממלאים הכי הרבה מקום בלב ❣️</p>
       </header>
       
