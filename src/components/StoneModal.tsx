@@ -49,7 +49,7 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button className="inquire-button hebrew-text" disabled>להזמנה</button>
+              <button className="inquire-button hebrew-text" >להזמנה</button>
             </div>
           </div>
           <div className="modal-image">

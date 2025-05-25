@@ -461,6 +461,12 @@ main {
   box-shadow: 0 4px 15px rgba(139, 115, 85, 0.4);
   position: relative;
   overflow: hidden;
+  outline: none;
+}
+
+.inquire-button:focus {
+  outline: none;
+  box-shadow: 0 6px 20px rgba(139, 115, 85, 0.6);
 }
 
 .inquire-button::before {
