@@ -135,6 +135,39 @@ main {
   cursor: pointer;
 }
 
+.sold-filter input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.sold-filter input[type="checkbox"]:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.sold-filter input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.sold-filter input[type="checkbox"]:hover {
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+}
+
 /* Stone grid */
 .stone-grid {
   display: grid;
