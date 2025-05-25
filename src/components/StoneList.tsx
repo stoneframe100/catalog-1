@@ -9,7 +9,7 @@ type StoneListProps = {
 
 const StoneList = ({ stones }: StoneListProps) => {
   const [filter, setFilter] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('תמונה');
   const [showSold, setShowSold] = useState(true);
   const [selectedStone, setSelectedStone] = useState<Stone | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,6 +20,8 @@ const StoneList = ({ stones }: StoneListProps) => {
     const categoryFromUrl = urlParams.get('category');
     if (categoryFromUrl) {
       setCategoryFilter(categoryFromUrl);
+    } else {
+      setCategoryFilter('תמונה');
     }
   }, []);
 
@@ -44,7 +46,7 @@ const StoneList = ({ stones }: StoneListProps) => {
       stone.description.toLowerCase().includes(filter.toLowerCase()) || 
       stone.sku.toLowerCase().includes(filter.toLowerCase());
     
-    const matchesCategory = categoryFilter === '' || stone.category === categoryFilter;
+    const matchesCategory = stone.category === categoryFilter;
     const matchesSoldFilter = showSold || !stone.isSold;
     
     return matchesSearch && matchesCategory && matchesSoldFilter;
@@ -91,7 +93,6 @@ const StoneList = ({ stones }: StoneListProps) => {
           className={`category-filter ${containsHebrew(categoryFilter) ? 'hebrew-text' : ''}`}
           dir={containsHebrew(categoryFilter) ? 'rtl' : 'ltr'}
         >
-          <option value="">כל הקטגוריות</option>
           {categories.map(category => (
             <option 
               key={category} 
