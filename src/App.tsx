@@ -1,7 +1,7 @@
 import './App.css';
 import type { Stone } from './types/Stone';
 import StoneList from './components/StoneList';
-import stonesData from './data/data.json';
+import stonesData from '../data.json';
 
 // Process and transform data from data.json
 const stoneData: Stone[] = stonesData.map(item => {
