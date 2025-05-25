@@ -15,6 +15,7 @@ A React application for browsing and filtering a collection of stone pictures an
 
 ## Getting Started
 
+
 ### Prerequisites
 
 - Node.js (v14+)
