@@ -40,6 +40,11 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>×</button>
         <div className="modal-body">
+          <div className="modal-image">
+            <img src={stone.image} alt={stone.name} />
+            {stone.isSold && <div className="modal-sold-badge">SOLD</div>}
+            {isNew() && <div className="modal-new-badge">NEW</div>}
+          </div>
           <div className="modal-details-container">
             <div className="modal-details">
               <h2 className={containsHebrew(stone.name) ? 'hebrew-text' : ''}>{stone.name}</h2>
@@ -64,11 +69,6 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
             <div className="modal-footer">
               <button className="inquire-button hebrew-text" onClick={handlePurchaseClick}>להזמנה</button>
             </div>
-          </div>
-          <div className="modal-image">
-            <img src={stone.image} alt={stone.name} />
-            {stone.isSold && <div className="modal-sold-badge">SOLD</div>}
-            {isNew() && <div className="modal-new-badge">NEW</div>}
           </div>
         </div>
       </div>
