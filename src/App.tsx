@@ -43,7 +43,7 @@ function App() {
       </main>
       
       <footer>
-        <p>© 2025 Stoneframe</p>
+        <p>© 2025 STONEFRAME</p>
       </footer>
     </div>
   );

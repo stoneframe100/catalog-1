@@ -3,19 +3,19 @@
   --bg-color: #fefefe;
   --bg-solid: #fefefe;
   --text-color: #3c2e26;
-  --header-bg: linear-gradient(135deg, #8b7355 0%, #a0845c 100%);
+  --header-bg: linear-gradient(135deg, #b8a082 0%, #c4a373 100%);
   --card-bg: #ffffff;
-  --card-shadow: 0 8px 25px rgba(139, 115, 85, 0.15);
-  --card-hover-shadow: 0 15px 35px rgba(139, 115, 85, 0.25);
+  --card-shadow: 0 8px 25px rgba(184, 160, 130, 0.15);
+  --card-hover-shadow: 0 15px 35px rgba(184, 160, 130, 0.25);
   --border-color: #f9f8f7;
   --highlight-color: linear-gradient(135deg, #fcfcfc 0%, #f9f9f9 100%);
-  --button-bg: linear-gradient(135deg, #8b7355 0%, #a0845c 100%);
-  --button-hover: linear-gradient(135deg, #7a6449 0%, #8f7350 100%);
+  --button-bg: linear-gradient(135deg, #b8a082 0%, #c4a373 100%);
+  --button-hover: linear-gradient(135deg, #a89270 0%, #b4935f 100%);
   --button-text: #ffffff;
   --new-badge-bg: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
   --available-color: #6b8e23;
   --sold-color: #a0522d;
-  --accent-color: #8b7355;
+  --accent-color: #b8a082;
   --secondary-color: #cd853f;
 }
 
@@ -43,6 +43,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background: #faf9f8;
 }
 
 /* Sticky header */
@@ -104,19 +105,18 @@ main {
 
 .search-input, .category-filter {
   padding: 0.75rem 1rem;
-  border: 2px solid var(--border-color);
-  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
   font-size: 1rem;
   background-color: white;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  box-shadow: none;
 }
 
 .search-input:focus, .category-filter:focus {
   outline: none;
   border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
-  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px rgba(184, 160, 130, 0.1);
 }
 
 .search-input {
@@ -491,7 +491,7 @@ main {
   margin: 0 auto;
   display: block;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(139, 115, 85, 0.4);
+  box-shadow: 0 4px 15px rgba(184, 160, 130, 0.4);
   position: relative;
   overflow: hidden;
   outline: none;
@@ -499,7 +499,7 @@ main {
 
 .inquire-button:focus {
   outline: none;
-  box-shadow: 0 6px 20px rgba(139, 115, 85, 0.6);
+  box-shadow: 0 6px 20px rgba(184, 160, 130, 0.6);
 }
 
 .inquire-button::before {
@@ -516,7 +516,7 @@ main {
 .inquire-button:hover:not(:disabled) {
   background: var(--button-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139, 115, 85, 0.6);
+  box-shadow: 0 6px 20px rgba(184, 160, 130, 0.6);
 }
 
 .inquire-button:hover:not(:disabled)::before {
@@ -575,7 +575,7 @@ main {
 }
 
 footer {
-  margin-top: 2rem;
+  margin-top: 0;
   text-align: center;
   padding: 2rem 0;
   color: rgba(255, 255, 255, 0.8);
@@ -685,11 +685,11 @@ footer {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(139, 115, 85, 0.3);
+  box-shadow: 0 3px 10px rgba(184, 160, 130, 0.3);
 }
 
 .alert-button:hover {
   background: var(--button-hover);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(139, 115, 85, 0.4);
+  box-shadow: 0 5px 15px rgba(184, 160, 130, 0.4);
 }
