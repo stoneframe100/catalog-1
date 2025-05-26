@@ -14,6 +14,7 @@ const StoneList = ({ stones }: StoneListProps) => {
   const [selectedStone, setSelectedStone] = useState<Stone | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+
   // Initialize category filter from URL parameter on component mount
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -22,6 +23,17 @@ const StoneList = ({ stones }: StoneListProps) => {
       setCategoryFilter(categoryFromUrl);
     } else {
       setCategoryFilter('תמונה');
+    }
+
+    const selectedSku = urlParams.get('item');
+    if (selectedSku) {
+      const stone = stones.find(s => s.sku === selectedSku);
+      if (stone) {
+        setSelectedStone(stone);
+        setIsModalOpen(true);
+        // Prevent body scrolling when modal is open
+        document.body.style.overflow = 'hidden';
+      }
     }
   }, []);
 
@@ -35,6 +47,17 @@ const StoneList = ({ stones }: StoneListProps) => {
     }
     window.history.replaceState({}, '', url.toString());
   }, [categoryFilter]);
+
+    // Update URL parameter when item is selected or deselected
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (selectedStone) {
+      url.searchParams.set('item', selectedStone.sku);
+    } else {
+      url.searchParams.delete('item');
+    }
+    window.history.replaceState({}, '', url.toString());
+  }, [selectedStone]);
 
   // Get unique categories for filter
   const categories = Array.from(new Set(stones.map(stone => stone.category))).sort();

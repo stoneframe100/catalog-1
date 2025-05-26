@@ -42,6 +42,7 @@ export const UpadatesAlert = () => {
       showAlert={showUpdatesAlert}
       onClose={() => setShowUpdatesAlert(false)}
       onConfirm={handleEmailSubmit}
+      confirmDisabled={!email}
       onCancel={() => handleCancelEmail()}
       cancelText="לא תודה"
       confirmText="שליחה"
@@ -49,6 +50,7 @@ export const UpadatesAlert = () => {
       <div className="email-alert-body">
         <p>השאירו כתובת מייל ותקבלו עדכונים על מוצר חדש באתר, ועוד.</p>
         <input
+          autoFocus
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

@@ -8,6 +8,7 @@ export const Alert = ({
   cancelText = 'ביטול',
   confirmText = 'הבנתי',
   children,
+  confirmDisabled = false,
 }: {
   subject?: string;
   message?: string;
@@ -18,6 +19,7 @@ export const Alert = ({
   confirmText?: string;
   cancelText?: string;
   children?: React.ReactNode;
+  confirmDisabled?: boolean;
 }) => {
   if (!showAlert) return null;
 
@@ -38,7 +40,7 @@ export const Alert = ({
           )}
         </div>
         <div className="alert-footer">
-          <button className="alert-button hebrew-text" onClick={onConfirm || onClose}>
+          <button className="alert-button hebrew-text" onClick={onConfirm || onClose} disabled={confirmDisabled}>
             {confirmText}
           </button>
            {onCancel && <button className="alert-button secondary-button hebrew-text" onClick={onCancel}>
