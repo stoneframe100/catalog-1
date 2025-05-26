@@ -21,12 +21,13 @@ const stoneData: Stone[] = stonesData.map(item => {
     id: parseInt(item.sku) || 0,
     name: name,
     description: item.description || "",
-    image: item.image || "",
+    image: `/items/${item.sku}.jpg`,
     category: item.category || "מחזיק מפתחות",
     sku: item.sku || "",
     isSold: isSold,
     created_at: created_at,
-    price: price
+    price: price,
+    size: item.size || ''
   };
 });
 
