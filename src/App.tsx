@@ -3,6 +3,7 @@ import type { Stone } from './types/Stone';
 import StoneList from './components/StoneList';
 import stonesData from '../data.json';
 import { UpadatesAlert } from './components/UpdatesAlert';
+import { Toaster } from 'react-hot-toast';
 
 // Process and transform data from data.json
 const stoneData: Stone[] = stonesData.map(item => {
@@ -42,6 +43,7 @@ function App() {
       </main>
 
       <UpadatesAlert />
+      <Toaster position="top-center" />
       <footer>
         <p>© 2025 STONEFRAME</p>
       </footer>

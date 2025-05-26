@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Alert } from './Alert';
+import { toast } from 'react-hot-toast';
 
 export const UpadatesAlert = () => {
   const [showUpdatesAlert, setShowUpdatesAlert] = useState(false);
@@ -13,7 +14,7 @@ export const UpadatesAlert = () => {
   }, []);
 
   const handleEmailSubmit = async () => {
-   const response = await fetch('https://hook.eu2.make.com/8tev33prfvv7saz2vomtlfkhn8dq47tm', {
+   await fetch('https://hook.eu2.make.com/8tev33prfvv7saz2vomtlfkhn8dq47tm', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,8 +24,10 @@ export const UpadatesAlert = () => {
         email: email,
       }),
     });
-    console.log('Email submitted:', email, 'Response:', response);
+
+    toast.success('נרשמת בהצלחה לעדכונים 🎉');
     localStorage.setItem('emailSubmitted', 'true');
+
     setShowUpdatesAlert(false);
   };
 
