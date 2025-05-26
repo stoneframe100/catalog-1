@@ -7,6 +7,6 @@ export interface Stone {
   sku: string;
   isSold: boolean;
   created_at: string; // ISO date string
-  price: number;
+  price?: number | null;
   size: string; // Size of the stone, e.g., "small", "medium", "large"
 }
