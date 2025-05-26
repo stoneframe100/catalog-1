@@ -70,7 +70,7 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
                   </span>
                 </div>
 
-                <div className="modal-info-row">
+                {stone.price && <div className="modal-info-row">
                   <span className="modal-label hebrew-text">מחיר:</span>
                   <span className="modal-value">
                     {new Intl.NumberFormat('he-IL', {
@@ -78,7 +78,7 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
                       currency: 'ILS',
                     }).format(stone.price)}
                   </span>
-                </div>
+                </div>}
               </div>
             </div>
             <div className="modal-footer">
