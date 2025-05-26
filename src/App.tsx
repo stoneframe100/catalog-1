@@ -21,7 +21,7 @@ const stoneData: Stone[] = stonesData.map(item => {
     id: parseInt(item.sku) || 0,
     name: name,
     description: item.description || "",
-    image: `/items/${item.sku}.jpg`,
+    image: `items/${item.sku}.jpg`,
     category: item.category || "מחזיק מפתחות",
     sku: item.sku || "",
     isSold: isSold,
