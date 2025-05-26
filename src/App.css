@@ -103,7 +103,8 @@ main {
   border: 1px solid var(--border-color);
 }
 
-.search-input, .category-filter {
+.search-input,
+.category-filter {
   padding: 0.75rem 1rem;
   border: 1px solid var(--border-color);
   border-radius: 6px;
@@ -113,7 +114,8 @@ main {
   box-shadow: none;
 }
 
-.search-input:focus, .category-filter:focus {
+.search-input:focus,
+.category-filter:focus {
   outline: none;
   border-color: var(--accent-color);
   box-shadow: 0 0 0 2px rgba(184, 160, 130, 0.1);
@@ -252,8 +254,15 @@ main {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: rotate(5deg) scale(1); }
-  50% { transform: rotate(5deg) scale(1.1); }
+
+  0%,
+  100% {
+    transform: rotate(5deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(5deg) scale(1.1);
+  }
 }
 
 .sku-label {
@@ -581,7 +590,8 @@ main {
   }
 }
 
-.loading, .no-results {
+.loading,
+.no-results {
   text-align: center;
   padding: 2rem;
   color: #777;
@@ -629,6 +639,7 @@ footer {
     opacity: 0;
     transform: translateY(-50px) scale(0.8);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -687,6 +698,9 @@ footer {
   padding: 1rem 1.5rem;
   background-color: #f8f9fa;
   text-align: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
 .alert-button {
@@ -706,4 +720,39 @@ footer {
   background: var(--button-hover);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(184, 160, 130, 0.4);
+}
+
+.alert-button.secondary-button {
+  background: white;
+  color: var(--text-color);
+}
+
+.text-input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: white;
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+.text-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(184, 160, 130, 0.1);
+}
+
+
+/* email alert */
+.email-alert-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 30px;
+  gap: 20px;
+}
+.email-alert-body input {
+  width: 100%;
 }

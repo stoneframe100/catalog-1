@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Stone } from '../types/Stone';
+import { Alert } from './Alert';
 
 type StoneModalProps = {
   stone: Stone;
@@ -28,11 +29,6 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
   // Handle purchase button click
   const handlePurchaseClick = () => {
     setShowAlert(true);
-  };
-
-  // Handle alert close
-  const handleAlertClose = () => {
-    setShowAlert(false);
   };
 
   return (
@@ -92,23 +88,7 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
         </div>
       </div>
       
-      {/* Custom Alert */}
-      {showAlert && (
-        <div className="alert-overlay" onClick={handleAlertClose}>
-          <div className="alert-content" onClick={(e) => e.stopPropagation()}>
-            <div className="alert-header">
-              <h3 className="hebrew-text">הודעה</h3>
-              <button className="alert-close" onClick={handleAlertClose}>×</button>
-            </div>
-            <div className="alert-body">
-              <p className="hebrew-text">אפשרות ההזמנה עדיין לא זמינה - בקרוב!</p>
-            </div>
-            <div className="alert-footer">
-              <button className="alert-button hebrew-text" onClick={handleAlertClose}>הבנתי</button>
-            </div>
-          </div>
-        </div>
-      )}
+      <Alert message={'אפשרות ההזמנה עדיין לא זמינה - בקרוב!'} onClose={() =>setShowAlert(false)} showAlert={showAlert} ></Alert>
     </div>
   );
 };
