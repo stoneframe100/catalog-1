@@ -260,15 +260,14 @@ main {
   position: absolute;
   top: 15px;
   left: 15px;
-  background: linear-gradient(135deg, rgba(60, 46, 38, 0.9) 0%, rgba(107, 91, 71, 0.9) 100%);
+  background: rgba(60, 46, 38, 0.9);
   color: white;
-  padding: 6px 12px;
-  border-radius: 15px;
+  padding: 3px 10px;
+  border-radius: 6px;
   font-size: 0.75rem;
   font-weight: bold;
   z-index: 5;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .stone-info {
@@ -346,7 +345,6 @@ main {
   max-width: 900px;
   display: flex;
   flex-direction: column;
-  max-height: 90vh;
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -382,7 +380,7 @@ main {
 .modal-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .modal-sold-badge {
@@ -436,6 +434,7 @@ main {
 
 .modal-info-row {
   display: flex;
+  gap: 50px;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
@@ -456,6 +455,10 @@ main {
   font-weight: 500;
   color: var(--text-color);
   font-size: 1.1rem;
+}
+
+.modal-value.ltr {
+  direction: ltr;
 }
 
 .modal-value.status {
@@ -535,7 +538,8 @@ main {
 @media (min-width: 768px) {
   .modal-content {
     flex-direction: row;
-    max-height: 80vh;
+    max-height: 95vh;
+    width: min-content;
   }
 
   .modal-body {
@@ -546,7 +550,7 @@ main {
   }
 
   .modal-image {
-    width: 50%;
+    width: 50vw;
     height: auto;
   }
 
@@ -557,6 +561,7 @@ main {
   }
 
   .modal-details {
+    padding: 4rem;
     flex: 1;
     overflow-y: auto;
   }

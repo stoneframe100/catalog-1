@@ -54,14 +54,33 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
                   <span className="modal-label hebrew-text">קטגוריה:</span>
                   <span className={`modal-value ${containsHebrew(stone.category) ? 'hebrew-text' : ''}`}>{stone.category}</span>
                 </div>
+
                 <div className="modal-info-row">
                   <span className="modal-label hebrew-text">מק"ט:</span>
                   <span className="modal-value">#{stone.sku.padStart(4, '0')}</span>
                 </div>
+
+                {stone.size && <div className="modal-info-row">
+                  <span className="modal-label hebrew-text">גודל:</span>
+                  <span className="modal-value ltr">{stone.size}</span>
+                </div>}
+
+
+
                 <div className="modal-info-row">
                   <span className="modal-label hebrew-text">סטטוס:</span>
                   <span className={`modal-value status hebrew-text ${stone.isSold ? 'sold' : 'available'}`}>
                     {stone.isSold ? 'נמכר' : 'זמין'}
+                  </span>
+                </div>
+
+                <div className="modal-info-row">
+                  <span className="modal-label hebrew-text">מחיר:</span>
+                  <span className="modal-value">
+                    {new Intl.NumberFormat('he-IL', {
+                      style: 'currency',
+                      currency: 'ILS',
+                    }).format(stone.price)}
                   </span>
                 </div>
               </div>

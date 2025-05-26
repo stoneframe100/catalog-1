@@ -13,10 +13,7 @@ const stoneData: Stone[] = stonesData.map(item => {
   
   // Only use name if it exists in the original data, otherwise empty string
   const name = "";
-  
-  // Set price based on category
-  const price = item.category === "תמונה" ? 150 : 40;
-  
+
   return {
     id: parseInt(item.sku) || 0,
     name: name,
@@ -26,7 +23,7 @@ const stoneData: Stone[] = stonesData.map(item => {
     sku: item.sku || "",
     isSold: isSold,
     created_at: created_at,
-    price: price,
+    price: item.price,
     size: item.size || ''
   };
 });
