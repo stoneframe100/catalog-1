@@ -52,6 +52,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Varela+Round&family=Alef:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <script>
+      if (document.location.origin.indexOf('github.io') > 0) {
+        document.location.href = 'https://stoneframe.netlify.app/';
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
