@@ -14,5 +14,5 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
   },
-  // base: '/catalog/', // Add this for GitHub Pages deployment
+  base: '/catalog/', // Add this for GitHub Pages deployment
 })
