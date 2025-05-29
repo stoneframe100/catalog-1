@@ -14,7 +14,7 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).gtag('event', isOpen ? 'open_item_model' : 'close_item_modal', {
-      'item': stone.sku,
+      'item_id': stone.sku,
     });
   }, [isOpen, stone.sku]);
 
