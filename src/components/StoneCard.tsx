@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import type { Stone } from '../types/Stone';
 
 type StoneCardProps = {
@@ -6,6 +7,14 @@ type StoneCardProps = {
 };
 
 const StoneCard = ({ stone, onClick }: StoneCardProps) => {
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).gtag('event', 'open_item_model', {
+      'item': stone.sku,
+    });
+  }, []);
+
   // Check if the stone is new (created within the last 2 months)
   const isNew = () => {
     const createdDate = new Date(stone.created_at);
