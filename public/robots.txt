@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://stoneframe100.github.io/catalog/sitemap.xml
+Sitemap: https://stoneframe.netlify.app/netlify-sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
