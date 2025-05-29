@@ -35,6 +35,10 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
 
   // Handle purchase button click
   const handlePurchaseClick = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).gtag('event', 'purchase_clicked', {
+      'item_id': stone.sku,
+    });
     setShowAlert(true);
   };
 
