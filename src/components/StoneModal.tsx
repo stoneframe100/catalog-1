@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Stone } from '../types/Stone';
 import { Alert } from './Alert';
 
@@ -11,6 +11,13 @@ type StoneModalProps = {
 const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
   const [showAlert, setShowAlert] = useState(false);
   
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).gtag('event', isOpen ? 'open_item_model' : 'close_item_modal', {
+      'item': stone.sku,
+    });
+  }, [isOpen, stone.sku]);
+
   if (!isOpen) return null;
 
   // Check if the stone is new (created within the last 2 months)
