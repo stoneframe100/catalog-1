@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import type { Item } from '../types/Item';
 import { useState } from 'react';
 import { Alert } from './Alert';
@@ -10,6 +10,11 @@ type PurchaseProps = {
 const Purchase = ({ items }: PurchaseProps) => {
   const { sku } = useParams();
   const item = items.find((i) => i.sku === sku);
+
+  const [searchParams] = useSearchParams();
+
+  const earlyAccessCode = searchParams.get('earlyAccessCode');
+
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -25,6 +30,7 @@ const Purchase = ({ items }: PurchaseProps) => {
     e.preventDefault();
     const payload = {
       type: 'purchase',
+      earlyAccessCode,
       name,
       email,
       phone,
