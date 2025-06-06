@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Alert } from './Alert';
 import { toast } from 'react-hot-toast';
 
-export const UpadatesAlert = () => {
+export const UpdatesAlert = () => {
   const [showUpdatesAlert, setShowUpdatesAlert] = useState(false);
   const [email, setEmail] = useState('');
 
