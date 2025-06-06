@@ -442,7 +442,7 @@ main {
 
 .modal-details h2 {
   margin-top: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
   color: var(--text-color);
 }
