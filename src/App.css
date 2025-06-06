@@ -170,7 +170,7 @@ main {
   transform: scale(1.05);
 }
 
-/* Stone grid */
+/* items grid */
 .stone-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -178,7 +178,7 @@ main {
   direction: rtl;
 }
 
-/* Stone card */
+/* item card */
 .stone-card {
   border-radius: 20px;
   overflow: hidden;

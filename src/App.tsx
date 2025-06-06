@@ -1,12 +1,12 @@
 import './App.css';
-import type { Stone } from './types/Stone';
-import StoneList from './components/StoneList';
+import type { Item } from './types/Item';
+import ItemList from './components/ItemList';
 import stonesData from '../data.json';
 import { UpadatesAlert } from './components/UpdatesAlert';
 import { Toaster } from 'react-hot-toast';
 
 // Process and transform data from data.json
-const stoneData: Stone[] = stonesData.map(item => {
+const stoneData: Item[] = stonesData.map(item => {
   // Convert isSold from null to false when needed
   const isSold = item.isSold === true;
   
@@ -39,7 +39,7 @@ function App() {
       </header>
       
       <main>
-        <StoneList stones={stoneData} />
+        <ItemList items={stoneData} />
       </main>
 
       <UpadatesAlert />

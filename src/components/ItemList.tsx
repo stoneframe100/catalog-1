@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import type { Stone } from '../types/Stone';
-import StoneCard from './StoneCard';
-import StoneModal from './StoneModal';
+import type { Item } from '../types/Item';
+import ItemCard from './ItemCard';
+import ItemModal from './ItemModal';
 
-type StoneListProps = {
-  stones: Stone[];
+type ItemListProps = {
+  items: Item[];
 };
 
-const StoneList = ({ stones }: StoneListProps) => {
+const ItemList = ({ items }: ItemListProps) => {
   const [filter, setFilter] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('תמונה');
   const [showSold, setShowSold] = useState(true);
-  const [selectedStone, setSelectedStone] = useState<Stone | null>(null);
+  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
 
@@ -27,9 +27,9 @@ const StoneList = ({ stones }: StoneListProps) => {
 
     const selectedSku = urlParams.get('item');
     if (selectedSku) {
-      const stone = stones.find(s => s.sku === selectedSku);
-      if (stone) {
-        setSelectedStone(stone);
+      const item = items.find(i => i.sku === selectedSku);
+      if (item) {
+        setSelectedItem(item);
         setIsModalOpen(true);
         // Prevent body scrolling when modal is open
         document.body.style.overflow = 'hidden';
@@ -51,26 +51,26 @@ const StoneList = ({ stones }: StoneListProps) => {
     // Update URL parameter when item is selected or deselected
   useEffect(() => {
     const url = new URL(window.location.href);
-    if (selectedStone) {
-      url.searchParams.set('item', selectedStone.sku);
+    if (selectedItem) {
+      url.searchParams.set('item', selectedItem.sku);
     } else {
       url.searchParams.delete('item');
     }
     window.history.replaceState({}, '', url.toString());
-  }, [selectedStone]);
+  }, [selectedItem]);
 
   // Get unique categories for filter
-  const categories = Array.from(new Set(stones.map(stone => stone.category))).sort();
+  const categories = Array.from(new Set(items.map(item => item.category))).sort();
 
   // Filter the stones based on search, category and sold status
-  const filteredStones = stones.filter(stone => {
+  const filteredItems = items.filter(item => {
     const matchesSearch = 
-      stone.name.toLowerCase().includes(filter.toLowerCase()) || 
-      stone.description.toLowerCase().includes(filter.toLowerCase()) || 
-      stone.sku.toLowerCase().includes(filter.toLowerCase());
+      item.name.toLowerCase().includes(filter.toLowerCase()) || 
+      item.description.toLowerCase().includes(filter.toLowerCase()) || 
+      item.sku.toLowerCase().includes(filter.toLowerCase());
     
-    const matchesCategory = stone.category === categoryFilter;
-    const matchesSoldFilter = showSold || !stone.isSold;
+    const matchesCategory = item.category === categoryFilter;
+    const matchesSoldFilter = showSold || !item.isSold;
     
     return matchesSearch && matchesCategory && matchesSoldFilter;
   }).sort((a, b) => {
@@ -80,8 +80,8 @@ const StoneList = ({ stones }: StoneListProps) => {
     return dateB - dateA;
   });
 
-  const handleStoneClick = (stone: Stone) => {
-    setSelectedStone(stone);
+  const handleItemClick = (item: Item) => {
+    setSelectedItem(item);
     setIsModalOpen(true);
     // Prevent body scrolling when modal is open
     document.body.style.overflow = 'hidden';
@@ -89,7 +89,7 @@ const StoneList = ({ stones }: StoneListProps) => {
 
   const handleModalClose = () => {
     setIsModalOpen(false);
-    setSelectedStone(null);
+    setSelectedItem(null);
     // Re-enable body scrolling
     document.body.style.overflow = 'auto';
   };
@@ -138,12 +138,12 @@ const StoneList = ({ stones }: StoneListProps) => {
       </div>
       
       <div className="stone-grid">
-        {filteredStones.length > 0 ? (
-          filteredStones.map(stone => (
-            <StoneCard 
-              key={stone.id} 
-              stone={stone} 
-              onClick={handleStoneClick}
+        {filteredItems.length > 0 ? (
+          filteredItems.map(item => (
+            <ItemCard 
+              key={item.id} 
+              item={item} 
+              onClick={handleItemClick}
             />
           ))
         ) : (
@@ -151,9 +151,9 @@ const StoneList = ({ stones }: StoneListProps) => {
         )}
       </div>
 
-      {selectedStone && (
-        <StoneModal
-          stone={selectedStone}
+      {selectedItem && (
+        <ItemModal
+          item={selectedItem}
           isOpen={isModalOpen}
           onClose={handleModalClose}
         />
@@ -162,4 +162,4 @@ const StoneList = ({ stones }: StoneListProps) => {
   );
 };
 
-export default StoneList;
+export default ItemList;

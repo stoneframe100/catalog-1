@@ -1,4 +1,4 @@
-export interface Stone {
+export interface Item {
   id: number;
   name: string;
   description: string;
@@ -8,5 +8,5 @@ export interface Stone {
   isSold: boolean;
   created_at: string; // ISO date string
   price?: number | null;
-  size: string; // Size of the stone, e.g., "small", "medium", "large"
+  size: string; // Size of the item, e.g., "small", "medium", "large"
 }

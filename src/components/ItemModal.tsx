@@ -1,28 +1,28 @@
 import { useEffect, useState } from 'react';
-import type { Stone } from '../types/Stone';
+import type { Item } from '../types/Item';
 import { Alert } from './Alert';
 
-type StoneModalProps = {
-  stone: Stone;
+type ItemModalProps = {
+  item: Item;
   isOpen: boolean;
   onClose: () => void;
 };
 
-const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
+const ItemModal = ({ item, isOpen, onClose }: ItemModalProps) => {
   const [showAlert, setShowAlert] = useState(false);
   
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).gtag('event', isOpen ? 'open_item_modal' : 'close_item_modal', {
-      'item_id': stone.sku,
+      'item_id': item.sku,
     });
-  }, [isOpen, stone.sku]);
+  }, [isOpen, item.sku]);
 
   if (!isOpen) return null;
 
   // Check if the stone is new (created within the last 2 months)
   const isNew = () => {
-    const createdDate = new Date(stone.created_at);
+    const createdDate = new Date(item.created_at);
     const twoMonthsAgo = new Date();
     twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
     return createdDate >= twoMonthsAgo;
@@ -37,7 +37,7 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
   const handlePurchaseClick = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).gtag('event', 'purchase_clicked', {
-      'item_id': stone.sku,
+      'item_id': item.sku,
     });
     setShowAlert(true);
   };
@@ -48,52 +48,52 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
         <button className="modal-close" onClick={onClose}>×</button>
         <div className="modal-body">
           <div className="modal-image">
-            <img src={stone.image} alt={stone.name} />
-            {stone.isSold && <div className="modal-sold-badge">SOLD</div>}
+            <img src={item.image} alt={item.name} />
+            {item.isSold && <div className="modal-sold-badge">SOLD</div>}
             {isNew() && <div className="modal-new-badge">NEW</div>}
           </div>
           <div className="modal-details-container">
             <div className="modal-details">
-              <h2 className={containsHebrew(stone.name) ? 'hebrew-text' : ''}>{stone.name}</h2>
-              <p className={`modal-description ${containsHebrew(stone.description) ? 'hebrew-text' : ''}`}>{stone.description}</p>
+              <h2 className={containsHebrew(item.name) ? 'hebrew-text' : ''}>{item.name}</h2>
+              <p className={`modal-description ${containsHebrew(item.description) ? 'hebrew-text' : ''}`}>{item.description}</p>
               <div className="modal-info-list">
                 <div className="modal-info-row">
                   <span className="modal-label hebrew-text">קטגוריה:</span>
-                  <span className={`modal-value ${containsHebrew(stone.category) ? 'hebrew-text' : ''}`}>{stone.category}</span>
+                  <span className={`modal-value ${containsHebrew(item.category) ? 'hebrew-text' : ''}`}>{item.category}</span>
                 </div>
 
                 <div className="modal-info-row">
                   <span className="modal-label hebrew-text">מק"ט:</span>
-                  <span className="modal-value">#{stone.sku.padStart(4, '0')}</span>
+                  <span className="modal-value">#{item.sku.padStart(4, '0')}</span>
                 </div>
 
-                {stone.size && <div className="modal-info-row">
+                {item.size && <div className="modal-info-row">
                   <span className="modal-label hebrew-text">גודל:</span>
-                  <span className="modal-value ltr">{stone.size}</span>
+                  <span className="modal-value ltr">{item.size}</span>
                 </div>}
 
 
 
                 <div className="modal-info-row">
                   <span className="modal-label hebrew-text">סטטוס:</span>
-                  <span className={`modal-value status hebrew-text ${stone.isSold ? 'sold' : 'available'}`}>
-                    {stone.isSold ? 'נמכר' : 'זמין'}
+                  <span className={`modal-value status hebrew-text ${item.isSold ? 'sold' : 'available'}`}>
+                    {item.isSold ? 'נמכר' : 'זמין'}
                   </span>
                 </div>
 
-                {stone.price && <div className="modal-info-row">
+                {item.price && <div className="modal-info-row">
                   <span className="modal-label hebrew-text">מחיר:</span>
                   <span className="modal-value">
                     {new Intl.NumberFormat('he-IL', {
                       style: 'currency',
                       currency: 'ILS',
-                    }).format(stone.price)}
+                    }).format(item.price)}
                   </span>
                 </div>}
               </div>
             </div>
             <div className="modal-footer">
-              <button className="inquire-button hebrew-text" onClick={handlePurchaseClick}>להזמנה</button>
+              <button disabled={item.isSold} className="inquire-button hebrew-text" onClick={handlePurchaseClick}>להזמנה</button>
             </div>
           </div>
         </div>
@@ -104,4 +104,4 @@ const StoneModal = ({ stone, isOpen, onClose }: StoneModalProps) => {
   );
 };
 
-export default StoneModal;
+export default ItemModal;

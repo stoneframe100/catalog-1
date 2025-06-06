@@ -41,27 +41,6 @@ A React application for browsing and filtering a collection of stone pictures an
 
 4. Open your browser and navigate to `http://localhost:5173`
 
-## Data Structure
-
-Stone data is stored with the following structure:
-
-```typescript
-interface Stone {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  category: string;
-  sku: string;
-  isSold: boolean;
-  created_at: string; // ISO date string
-}
-```
-
-## Adding New Stones
-
-To add new stones to the catalog, edit the stone data array in `src/App.tsx`, following the existing format.
-
 ## Building for Production
 
 ```
