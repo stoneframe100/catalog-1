@@ -31,8 +31,6 @@ const ItemList = ({ items }: ItemListProps) => {
       if (item) {
         setSelectedItem(item);
         setIsModalOpen(true);
-        // Prevent body scrolling when modal is open
-        document.body.style.overflow = 'hidden';
       }
     }
   }, []);
