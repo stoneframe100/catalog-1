@@ -81,8 +81,6 @@ const ItemList = ({ items }: ItemListProps) => {
   const handleItemClick = (item: Item) => {
     setSelectedItem(item);
     setIsModalOpen(true);
-    // Prevent body scrolling when modal is open
-    document.body.style.overflow = 'hidden';
   };
 
   const handleModalClose = () => {
